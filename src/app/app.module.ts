@@ -3,14 +3,39 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { NecklaceComponent } from './components/necklace/necklace.component';
+import { RingsComponent } from './components/rings/rings.component';
+import { BraceletsComponent } from './components/bracelets/bracelets.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { EarringsComponent } from './components/earrings/earrings.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NecklaceComponent,
+    RingsComponent,
+    BraceletsComponent,
+    EarringsComponent,
+    HomepageComponent,
+    ProductDetailsComponent,
+    CheckoutComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule,
+    RouterModule,
+    CommonModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

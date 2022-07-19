@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+
+.main-div{
+    padding-top: 150px;
+}
+.card {
+    display: inline-block;
+    padding: 20px;
+    background-color: whitesmoke;
+    box-shadow: 0 0 20px #ccc;
+}
+
+
+.display-product-image {
+    width: 7 rem;
+    margin-left: 27px;
+}
+
+.display-product-price {
+    padding-top: 30px;
+}
+
+.product-display-icons {
+    flex-direction: column;
+    float: right;
+    margin: 10px;
+    padding-bottom: 30px;
+
+}
+
+.fa-heart {
+    color: red;
+    padding-right: 25px;
+
+}
+
+.fa-cart-shopping {
+    color: black;
+}
+
+.card-text {
+    font-weight: 600;
+    font-size: x-large;
+    color: black;
+}

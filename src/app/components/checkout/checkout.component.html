@@ -1,0 +1,50 @@
+<div class="container-fluid main-div">
+    <div class="container-fluid">
+        <div class="card items-detail-area">
+            <div class="card-header">
+                <h2>My Cart</h2>
+            </div>
+            <div  *ngFor="let product of savedCartProducts">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="product-image-area">
+                            <img src="{{product.image}}" class="product-image">
+                        </div>
+                        <div class="product-text-details">
+                            <h3>{{product.name}}</h3>
+                            <h3>{{product.price}}</h3>
+                            <h3>{{product.quantity}}</h3>
+                        </div>
+                        <div class="btn-remove mb-3">
+                            <button class="btn btn-danger" (click)="removeProduct(product.name)">REMOVE</button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid ">
+        <div class="card price-detail-area">
+            <div class="card-header">
+                <h2>Price Details</h2>
+            </div>
+            <div class="contaier total-price-display-area">
+                <h4 class="mb-3">Price({{totalItem}} items) : <h4 class="total-price-display">Rs. {{totalItemPrice}}
+                    </h4>
+                </h4>
+                <h4 class="mb-3">discount : <input type="text" [(ngModel)]="appliedCoupons" class="coupons-input-field"
+                        list="coupons" placeholder="apply coupons here">
+                    <datalist id="coupons">
+                        <option *ngFor="let coupons of discountCoupons">{{coupons}}</option>
+                    </datalist>
+                    <h5>{{discountApplied}}</h5>
+                    <button class="btn btn-success btn-sm ml-3" (click)="applyDiscoutCoupons()">submit</button>
+                </h4>
+
+                <h4 class="mb-3">Delivery Charges : </h4>
+                <h4>Total Amount : </h4>
+                <!-- <h4>{{}}</h4> -->
+            </div>
+        </div>
+    </div>
+</div>

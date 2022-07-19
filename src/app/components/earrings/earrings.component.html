@@ -1,0 +1,22 @@
+<div class="container-fluid main-div">
+    <div class="col-md-3 card display-product" *ngFor=" let product of productEarings">
+        <!-- <div class="wrapper single-display-product"> -->
+            <!-- <p class="display-product-id">{{product.id}}</p>
+            <img class="display-product-image" [src]="product.image">
+            <p class="display-product-name">{{product.name}}</p>
+            <p class="display-product-price">{{'Rs '+product.price}}</p> -->
+            <a [routerLink]="['/productdetailearring/'+product.id]" >
+                <img class="card-title display-product-image" [src]="product.image">
+                <p class="card-text display-product-name">{{product.name}}</p>
+            </a>
+            <p class="card-text display-product-price">{{'Rs '+product.price}}</p>
+    
+            <div class="product-display-icons">
+                <a class="card-link" routerLink="/#"> <i class="fa fa-heart fa-2xl"></i> </a>
+                <button class="btn btn-plain" (click)="addToCart(product)"> <i class="fa-solid fa-cart-shopping fa-2xl"></i> </button>
+            </div>
+        <!-- </div> -->
+    </div>
+    <!-- <div class="col-md-4"></div>
+    <div class="col-md-4"></div> -->
+</div>

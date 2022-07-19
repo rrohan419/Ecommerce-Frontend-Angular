@@ -1,0 +1,199 @@
+.navbar {
+    box-shadow: 10px 0px 19px black;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: fixed;
+    z-index: 1;
+    background-color: #ffd550;
+    padding-top: 30px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.display-area {
+    background-color: white;
+    // display: flex;
+    //code for making navbar static and scroll the peritcular div
+    margin: 4px;
+    padding: 4px;
+}
+
+.cart-subtotal {
+    text-align: center;
+}
+
+.logo {
+    width: 70px;
+    margin-right: 25px;
+}
+
+.checkout-button{
+    float: right;
+    margin-right: 5px;
+}
+
+.earrings-category {
+    color: black;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.necklace-category {
+    font-weight: 700;
+    font-size: 30px;
+    color: black;
+    letter-spacing: 1px;
+}
+
+.rings-category {
+    color: black;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.bracelet-category {
+    color: black;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.reward-coupons {
+    color: black;
+    font-weight: 600;
+    font-size: 15px;
+    margin-left: 5px;
+    margin-right: 20px;
+}
+
+.wishlist {
+    color: black;
+    font-weight: 600;
+    font-size: 15px;
+    margin-left: 5px;
+    margin-right: 20px;
+}
+
+.cart {
+    color: black;
+    font-weight: 600;
+    font-size: 15px;
+
+}
+
+.wishlist-logo {
+    color: red;
+    padding-right: 5px;
+
+}
+
+.fa-gift {
+    color: rgb(198, 52, 101);
+    padding-right: 5px;
+}
+
+.fa-cart-shopping {
+    color: black;
+    padding-right: 5px;
+}
+
+
+
+//copied scss 
+// .header{background:rgb(0, 178, 255);color:#fff;}
+#lblCartCount {
+    font-size: 12px;
+    background: red;
+    color: white;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -7px;
+
+}
+
+// .badge {
+//   padding-left: 9px;
+//   padding-right: 19px;
+//   -webkit-border-radius: 9px;
+//   -moz-border-radius: 9px;
+//   border-radius: 9px;
+// }
+
+// .label-warning[href],
+// .badge-warning[href] {
+//   background-color: #c67605;
+// }
+
+
+
+// cart designing
+
+.cart-image {
+    width: 75%;
+    margin-left: 25px;
+
+}
+
+.offcanvas-header {
+    background-color: black;
+    color: #ffd550;
+    // box-shadow: (0px 0px 19px #ffd550);
+
+}
+
+.btn-close {
+    background-color: white;
+}
+
+.offcanvas-title {
+    font-weight: 700;
+}
+
+.cart-pricing {
+    float: right;
+}
+
+.cart-toggle {
+    width: 30%;
+    padding: 20px;
+    // background-color: rgba(245, 245, 245, 0.711);
+}
+
+.card-name {
+    float: right;
+}
+
+.card {
+    box-shadow: (5px 5px 19px black);
+    background-color: white;
+    margin: 8px;
+    text-transform: uppercase;
+    // text-align: center;
+}
+
+.single-product-quantity-manager {
+    float: right;
+    // width: 10%;
+    text-align: center;
+    vertical-align: top;
+}
+
+.btn-remove {
+    // text-align: center;
+    font-weight: 600;
+    color: rgba(0, 0, 0, );
+    background-color: #fba004;
+    font-style: normal;
+}
+
+.button-remove {
+    text-align: center;
+    // font-weight: 600;
+}
+
+// .total-cart-item{
+// text-align-last: left;
+// text-align: center;
+// }

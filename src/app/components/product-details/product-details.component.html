@@ -1,0 +1,43 @@
+<div class="container-fluid main-div">
+    <div class="left-box">
+        <div>
+            <a class="back-arrow" routerLink="/">
+                <i class="fa-solid fa-arrow-left pt-4 mr-2"></i>
+                <span class="back-text">back</span>
+            </a>
+        </div>
+        <img src='{{productExtendedDetails.image}}' class="product-image">
+    </div>
+    <div class="right-box">
+        <div class="product-detail">
+            <div class="product-heading">
+                <h1>{{productExtendedDetails.name}}</h1>
+            </div>
+            <br>
+            <h3 class="mt-2 product-price">Price : {{"Rs "+discountedPrice}}</h3>
+            <p class="mt-1 original-pricing">Original Price : {{"Rs "+productExtendedDetails.price}}</p>
+            <div class="product-discount">
+                <label class="product-discount-label">Get discount of <b
+                        class="highlight">{{productExtendedDetails.discount+"% "}}</b>on this product</label>
+            </div>
+            <br>
+            <h4 class="mt-1">Material Type : {{productExtendedDetails.material_type}}</h4>
+            <br>
+            <h4 class="mt-1"> Weight : {{productExtendedDetails.weight+" grams"}}</h4>
+            <br>
+            <div class="icons mt-1">
+                <i class="fa-solid fa-heart fa-2xl mt-3"></i>
+                <button (click)="addToCart()" class="btn btn-info">add to cart
+                    <!-- <i class="fa-solid fa-cart-shopping fa-2xl mt-3"></i> -->
+                </button>
+            </div>
+            <br>
+
+            <h5>Discription</h5>
+            <div class="">
+                <p>{{productExtendedDetails.discription}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
