@@ -5,7 +5,7 @@
             <img class="card-title display-product-image" [src]="product.image">
             <p class="card-text display-product-name">{{product.name}}</p>
         </a>
-        <p class="card-text display-product-price">{{'Rs '+product.price}}</p>
+        <p class="card-text display-product-price">{{product.price | currency:'INR'}}</p>
 
         <div class="product-display-icons">
             <a class="card-link" routerLink="/#"> <i class="fa fa-heart fa-2xl"></i> </a>

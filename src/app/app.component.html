@@ -70,9 +70,9 @@
             <img class="cart-image" [src]="cart.image">
             <p class="card-name"><b>Name :</b>{{cart.name}}</p>
             <p><b>Type : </b>{{cart.material_type}}</p>
-            <p><b>Price : </b>{{"Rs. "+cart.price}}</p>
+            <p><b>Price : </b>{{cart.price |currency:'INR'}}</p>
             <p><b>Quantity : </b>{{cart.quantity}}</p>
-            <h5>Total : Rs. {{cart.totalPrice}}</h5>
+            <h5>Total : {{cart.totalPrice | currency:'INR'}}</h5>
             <div class=" button-remove mt-2">
               <button class="btn btn-danger btn-remove" (click)="deleteSingleProduct(cart.name)">remove</button>
             </div>
@@ -80,7 +80,7 @@
           <!-- <h3 > Total Price : Rs. {{cart.totalPrice}}</h3> -->
         </div>
         <div class="alert alert-success mt-3">
-          <h4 class="cart-subtotal">Subtotal ({{lastSavedQuantity}} items): Rs. {{cartTotal}}</h4>
+          <h4 class="cart-subtotal">Subtotal ({{lastSavedQuantity}} items): {{cartTotal | currency:'INR'}}</h4>
           <!-- <h4>{{lastSavedQuantity}}</h4> -->
         </div>
         <button class="btn btn-danger btn-lg" (click)="clearAllProducts()">clear cart</button>

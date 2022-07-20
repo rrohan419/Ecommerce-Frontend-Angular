@@ -14,8 +14,8 @@
                 <h1>{{productExtendedDetails.name}}</h1>
             </div>
             <br>
-            <h3 class="mt-2 product-price">Price : {{"Rs "+discountedPrice}}</h3>
-            <p class="mt-1 original-pricing">Original Price : {{"Rs "+productExtendedDetails.price}}</p>
+            <h3 class="mt-2 product-price">Price : {{discountedPrice | currency:'INR'}}</h3>
+            <p class="mt-1 original-pricing">Original Price : {{productExtendedDetails.price | currency:'INR'}}</p>
             <div class="product-discount">
                 <label class="product-discount-label">Get discount of <b
                         class="highlight">{{productExtendedDetails.discount+"% "}}</b>on this product</label>

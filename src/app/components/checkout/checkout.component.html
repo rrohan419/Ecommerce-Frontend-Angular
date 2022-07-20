@@ -4,7 +4,7 @@
             <div class="card-header">
                 <h2>My Cart</h2>
             </div>
-            <div  *ngFor="let product of savedCartProducts">
+            <div *ngFor="let product of savedCartProducts; index as i">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
                         <div class="product-image-area">
@@ -15,8 +15,14 @@
                             <h3>{{product.price}}</h3>
                             <h3>{{product.quantity}}</h3>
                         </div>
-                        <div class="btn-remove mb-3">
-                            <button class="btn btn-danger" (click)="removeProduct(product.name)">REMOVE</button>
+                        <div class=" mb-3 my-cart-utility">
+                            <button class="btn btn-danger  btn-remove "
+                                (click)="removeProduct(product.name)">remove</button>
+
+                            <label>quantity : </label>
+                            <input type="number" class="quantity-manager" value="{{product.quantity}}" #productQuantity>
+                            <button class="btn btn-success btn-sm ml-3" (click)="  manageQuantity(productQuantity.value, product.name)
+                            ">confirm</button>
                         </div>
                     </li>
                 </ul>
@@ -29,21 +35,33 @@
                 <h2>Price Details</h2>
             </div>
             <div class="contaier total-price-display-area">
-                <h4 class="mb-3">Price({{totalItem}} items) : <h4 class="total-price-display">Rs. {{totalItemPrice}}
+                <h4 class="mb-3">Price({{totalItem}} items) : <h4 class="total-price-display">Rs. {{totalItemPrice |
+                        currency:'INR'}}
                     </h4>
                 </h4>
-                <h4 class="mb-3">discount : <input type="text" [(ngModel)]="appliedCoupons" class="coupons-input-field"
-                        list="coupons" placeholder="apply coupons here">
+                <h4 class="mb-3">Coupon code : <input type="text" [(ngModel)]="appliedCoupons"
+                        class="coupons-input-field" list="coupons" placeholder="apply coupons here" #code>
                     <datalist id="coupons">
                         <option *ngFor="let coupons of discountCoupons">{{coupons}}</option>
                     </datalist>
-                    <h5>{{discountApplied}}</h5>
-                    <button class="btn btn-success btn-sm ml-3" (click)="applyDiscoutCoupons()">submit</button>
+                    <label *ngIf="flag" else errorcode>incorrect coupons</label>
+                    <ng-template #errorcode> coupons</ng-template>
+                    <button class="btn btn-success btn-sm ml-3" (click)="applyDiscoutCoupons(code)">submit</button>
+                </h4>
+                <h4>Applied Disount : <h4 class="discounted-price-text">{{discountApplied | currency:'INR'}}</h4>
                 </h4>
 
-                <h4 class="mb-3">Delivery Charges : </h4>
-                <h4>Total Amount : </h4>
+                <h4 class="mb-3 ">Delivery Charges : <h4 class="delivery-charges-text">{{delivery | currency:'INR'}}
+                    </h4>
+                </h4>
+
+                <h4>Total Amount : <h4 class="total-price-display">{{totalItemPrice-discountApplied+delivery |
+                        currency:'INR'}}</h4>
+                </h4>
                 <!-- <h4>{{}}</h4> -->
+            </div>
+            <div class="button-payment d-flex justify-content-center align-items-center" style="width: 100%;">
+                <button class="btn btn-info btn-lg  mt-3 mb-2 " routerLink="/">proceed to payment</button>
             </div>
         </div>
     </div>

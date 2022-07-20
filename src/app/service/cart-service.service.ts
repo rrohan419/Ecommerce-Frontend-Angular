@@ -29,12 +29,12 @@ export class CartServiceService implements OnInit {
   ngOnInit(): void {
 
   }
-  getLocalStorageSavedProducts() {
+  // getLocalStorageSavedProducts() {
 
-    this.lastSavedData = localStorage.getItem('savedItems');
-    this.cartCount = localStorage.getItem('cartQuantity');
-    this.cartTotalPrice = localStorage.getItem('cartPrice');
-  }
+  //   this.lastSavedData = localStorage.getItem('savedItems');
+  //   this.cartCount = localStorage.getItem('cartQuantity');
+  //   this.cartTotalPrice = localStorage.getItem('cartPrice');
+  // }
 
 
   getSavedProducts() {
@@ -51,19 +51,12 @@ export class CartServiceService implements OnInit {
     return this.cartTotalPrice;
   }
 
-  isDuplicate(item: Product) {
-    for (var i = 0; i < this.cartItem.length; i++) {
-      if (item.id === this.cartItem[i].id) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   addProduct(item: Product) {
  
-    for (let i = 0; i < this.cartItem.length; i++) {
-      if (item.name === this.cartItem[i].name) {
+    for (let i = 0; i < this.cartItem.length; i++) 
+    {
+      if (item.name === this.cartItem[i].name) 
+      {
         this.cartCount = this.cartCount + 1;
         this.cartItem[i].quantity = (this.cartItem[i].quantity + 1);
         this.cartItem[i].totalPrice = (this.cartItem[i].quantity * JSON.parse(this.cartItem[i].price));
@@ -71,19 +64,11 @@ export class CartServiceService implements OnInit {
         this.totalPrice.next(this.cartTotalPrice);
         this.cartQuantity.next(this.cartCount);
         this.productList.next(this.cartItem);
-        localStorage.setItem('cartQuantity', JSON.stringify(this.cartCount));
-        localStorage.setItem('savedItems', JSON.stringify(this.cartItem));
-        localStorage.setItem('cartPrice', JSON.stringify(this.cartTotalPrice));
-
-        //adding duplicate products
-
-        // localStorage.setItem('savedItems', JSON.stringify(this.cartItem));
-        // this.cartItem[this.cartItem.length] = item;
-        // this.productList.next(this.cartItem);
         return;
       }
     }
     item.quantity = 0;
+    item.totalPrice=0;
     item.quantity = item.quantity + 1;
     item.totalPrice = item.totalPrice + JSON.parse(item.price);
     this.cartTotalPrice = this.cartTotalPrice + JSON.parse(item.price);
@@ -92,10 +77,6 @@ export class CartServiceService implements OnInit {
     this.totalPrice.next(this.cartTotalPrice);
     this.cartQuantity.next(this.cartCount);
     this.productList.next(this.cartItem);
-    localStorage.setItem('cartPrice', JSON.stringify(this.cartTotalPrice));
-    localStorage.setItem('savedItems', JSON.stringify(this.cartItem));
-    localStorage.setItem('cartQuantity', JSON.stringify(this.cartCount));
-
 
     swal({
       icon: "success",
@@ -117,9 +98,6 @@ export class CartServiceService implements OnInit {
           this.cartItem.splice(i, 1);
           this.cartQuantity.next(this.cartCount);
           this.productList.next(this.cartItem);
-          localStorage.setItem('savedItems', JSON.stringify(this.cartItem));
-          localStorage.setItem('cartQuantity', JSON.stringify(this.cartCount));
-          localStorage.setItem('cartPrice', JSON.stringify(this.cartTotalPrice));
           swal({
             icon: "success",
             text: "deleted"
@@ -133,9 +111,6 @@ export class CartServiceService implements OnInit {
         this.totalPrice.next(this.cartTotalPrice);
         this.cartQuantity.next(this.cartCount);
         this.productList.next(this.cartItem);
-        localStorage.setItem('cartPrice', JSON.stringify(this.cartTotalPrice));
-        localStorage.setItem('savedItems', JSON.stringify(this.list));
-        localStorage.setItem('cartQuantity', JSON.stringify(this.total));
         swal({
           icon: "success",
           text: "deleted"

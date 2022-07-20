@@ -13,6 +13,7 @@ export class HomepageComponent implements OnInit {
   productEarings:any;
   productNecklace:any;
   productRings:any;
+  discountedPrice=0;
   constructor(private httpservice : ServiceService,private cartService: CartServiceService) { }
 
   ngOnInit(): void {
@@ -25,7 +26,9 @@ export class HomepageComponent implements OnInit {
   {
     this.httpservice.getBracelets().subscribe((data)=>{
       this.productBracelets=data;
+      this.discountedPrice = data.price -(data.price * data.discount)/100;
       console.log(this.productBracelets);
+      console.log(this.discountedPrice,"breacelet discouted price");
     })
   }
   

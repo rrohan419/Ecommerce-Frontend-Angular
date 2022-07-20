@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
     this.myCartTotalPrice.subscribe((data) => {
       this.cartTotal = data;
-      this.productDiscountedPrice = data
+      // this.productDiscountedPrice = data
       console.log(this.cartTotal, "cart total");
     })
   }
@@ -46,6 +46,7 @@ export class AppComponent implements OnInit {
     this.list.subscribe((data) => {
       this.cartData = data;
     });
+    
   }
 
   clearAllProducts() {
@@ -65,5 +66,5 @@ export class AppComponent implements OnInit {
     this.cartService.removeProduct(itemName);
     return this.getAllCartProducts();
   }
-
+  
 }

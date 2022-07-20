@@ -13,7 +13,7 @@
     margin-right: 100px;
 }
 .items-detail-area{
-    width: 40%;
+    width: 50%;
     float: left;
     margin-left: 70px;
 }
@@ -40,8 +40,23 @@
     float: right;
     // margin-left: 15px;
 }
+.discounted-price-text{
+    float: right;
+}
+.delivery-charges-text{
+    float: right;
+}
+.quantity-manager{
+    width: 10%;
+}
 .btn-remove{
-    text-align: right;
+    // text-align: right;
+    float: right;
+    // width: 10px;
+}
+.button-payment{
+    text-align: center;
+    float: left;
 }
 .coupons-input-field{
     width: 40%;
