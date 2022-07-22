@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { CartServiceService } from 'src/app/service/cart-service.service';
 import { ServiceService } from '../../service/service.service';
 
@@ -8,22 +8,20 @@ import { ServiceService } from '../../service/service.service';
   styleUrls: ['./bracelets.component.scss']
 })
 export class BraceletsComponent implements OnInit {
-  productBracelets:any;
+  @Input() productBracelets: any;
 
-  constructor(private httpservice : ServiceService, private cartService : CartServiceService) { }
+  constructor(private httpservice: ServiceService, private cartService: CartServiceService) { }
 
   ngOnInit(): void {
     this.getAllBracelets();
   }
-  getAllBracelets()
-  {
-    this.httpservice.getBracelets().subscribe((data)=>{
-      this.productBracelets=data;
-      console.log(this.productBracelets);
+  getAllBracelets() {
+    this.httpservice.getBracelets().subscribe((data) => {
+      this.productBracelets = data;
+      console.log(this.productBracelets,"hhh");
     })
   }
-  addToCart(product:any)
-  {
+  addToCart(product: any) {
     this.cartService.addProduct(product);
   }
 }

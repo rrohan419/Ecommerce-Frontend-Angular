@@ -1,48 +1,20 @@
-<div class="container-fluid main-div">
-    <div class="col-md-3 card display-product-earings" *ngFor=" let product of productEarings">
-        <a [routerLink]="['/productdetailearring/'+product.id]">
-            <img class="card-title display-product-image" [src]="product.image">
-            <p class="card-text display-product-name">{{product.name}}</p>
-        </a>
-        <p class="card-text display-product-price">{{product.price | currency:'INR'}}</p>
+<div class="container-fluid">
+<!-- component Interaction -->
 
-        <div class="product-display-icons">
-            <a class="card-link" routerLink="/#"> <i class="fa fa-heart fa-2xl"></i> </a>
-            <button class="btn btn-plain" (click)="addToCart(product)"> <i class="fa-solid fa-cart-shopping fa-2xl"></i> </button>
+    <div class="row">
+        <div class="display product">
+            <app-earrings [productEarings]="productEarings"></app-earrings>
         </div>
-    </div>
-    <div class="col-md-3 card display-product-bracelets" *ngFor="let product of productBracelets">
-        <a [routerLink]="['/productdetailbracelet/'+product.id]">
-            <img class="card-title display-product-image" [src]="product.image">
-            <p class="card-text display-product-name">{{product.name}}</p>
-        </a>
-        <p class="card-text display-product-price">{{product.price | currency:'INR'}}</p>
-        <div class="product-display-icons">
-            <a class="card-link" routerLink="/#"> <i class="fa fa-heart fa-2xl"></i> </a>
-            <button class="btn btn-plain" (click)="addToCart(product)"> <i class="fa-solid fa-cart-shopping fa-2xl"></i> </button>
+        <div class="display product">
+            <app-necklace [productNecklace]="productNecklace"></app-necklace>
         </div>
-    </div>
-    <div class="col-md-3 card display-product-necklace" *ngFor="let product of productNecklace">
-        <a [routerLink]="['/productdetailnecklace/'+product.id]">
-            <img class="card-title display-product-image" [src]="product.image">
-            <p class="card-text display-product-name">{{product.name}}</p>
-        </a>
-        <p class="card-text display-product-price">{{product.price | currency:'INR'}}</p>
+        <div class="display product">
+            <app-rings [productRings]="productRings"></app-rings>
+        </div>
+        <div class="display product">
+            <app-bracelets [productBracelets]="productBracelets"></app-bracelets>
+        </div>
+      </div>
 
-        <div class="product-display-icons">
-            <a class="card-link" routerLink="/#"> <i class="fa fa-heart fa-2xl"></i> </a>
-            <button class="btn btn-plain" (click)="addToCart(product)"> <i class="fa-solid fa-cart-shopping fa-2xl"></i> </button>
-        </div>
-    </div>
-    <div class="col-md-3 card display-product-rings" *ngFor="let product of productRings">
-        <a [routerLink]="['/productdetailring/'+product.id]">
-            <img class="card-title display-product-image" [src]="product.image">
-            <p class="card-text display-product-name">{{product.name}}</p>
-        </a>
-        <p class="card-text display-product-price">{{product.price | currency:'INR'}}</p>
-        <div class="product-display-icons">
-            <a class="card-link" routerLink="/#"><i class="fa fa-heart fa-2xl"></i> </a>
-            <button class="btn btn-plain" (click)="addToCart(product)"> <i class="fa-solid fa-cart-shopping fa-2xl"></i> </button>
-        </div>
-    </div>
+
 </div>

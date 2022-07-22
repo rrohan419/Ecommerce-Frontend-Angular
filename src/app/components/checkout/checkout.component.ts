@@ -28,14 +28,15 @@ export class CheckoutComponent implements OnInit {
   constructor(private cartService: CartServiceService) { }
 
   ngOnInit(): void {
+
     this.list.subscribe((data) => {
       this.savedCartProducts = data;
     });
-    console.log(this.savedCartProducts);
+    // console.log(this.savedCartProducts);
 
     this.total.subscribe((data) => {
       this.totalItem = data;
-      console.log(this.totalItem, "total item in the checkout page");
+      // console.log(this.totalItem, "total item in the checkout page");
     });
 
     this.myCartTotalPrice.subscribe((data) => {
@@ -55,7 +56,7 @@ export class CheckoutComponent implements OnInit {
       else {
         this.delivery = 0;
       }
-      console.log(this.totalItemPrice, "total item price in the chekout page");
+      // console.log(this.totalItemPrice, "total item price in the chekout page");
     });
 
   }
@@ -82,160 +83,42 @@ export class CheckoutComponent implements OnInit {
   }
 
 
-  applyDiscoutCoupons(code: any) {
+  async applyDiscoutCoupons(code: any) {
+
     console.log(code.value);
-    switch (code.value) {
-      case 'EAR00010':
+    let data ={
+      "coupon" : code.value,
+      "savedCartProducts" : this.savedCartProducts,
+      "totalDiscount" : this.totalDiscount,
+      "flag" : this.flag,
+      "totalItemPrice" : this.totalItemPrice,
+      "discountApplied": this.discountApplied
 
-        for (let i = 0; i < this.savedCartProducts.length; i++) {
-          let a = this.savedCartProducts[i].name.search('Earrings');
-          if (a < 0) {
-            this.flag = true;
-            console.log("different name");
-            break;
-          }
-          console.log(a, "aaaaaaaaaaaaa");
-        }
-        if (!this.flag) {
-          this.totalDiscount = (this.totalItemPrice * 10) / 100;
-          console.log(this.totalDiscount, "ear00010");
-          this.discountApplied = this.totalDiscount;
-          // this.totalItemPrice = this.totalItemPrice-this.discountApplied;
-
-          this.flag = false;
-        }
-        break;
-
-      case 'NEC00020':
-        for (let i = 0; i < this.savedCartProducts.length; i++) {
-          let product = this.savedCartProducts[i].name.search('Necklace');
-          if (product < 0) {
-            this.flag = true;
-            break;
-          }
-        }
-        if (!this.flag) {
-          this.totalDiscount = (this.totalItemPrice * 20) / 100;
-          console.log(this.totalDiscount, "ear00010");
-          this.discountApplied = this.totalDiscount;
-          // this.totalItemPrice = this.totalItemPrice-this.discountApplied;
-          this.flag = false;
-        }
-        console.log(this.appliedCoupons, 'NEC00020');
-        break;
-
-      case 'RIN00015':
-        for (let i = 0; i < this.savedCartProducts.length; i++) {
-          let product = this.savedCartProducts[i].name.search('Ring');
-          if (product < 0) {
-            this.flag = true;
-            return false;
-          }
-        }
-        if (!this.flag) {
-          this.totalDiscount = (this.totalItemPrice * 15) / 100;
-          console.log(this.totalDiscount, "Ring00010");
-          this.discountApplied = this.totalDiscount;
-          //  this.totalItemPrice = this.totalItemPrice-this.discountApplied;
-          this.flag = false;
-          return true;
-        }
-        console.log(this.appliedCoupons, 'RIN00015');
-        break;
-      case 'BRC00025':
-        for (let i = 0; i < this.savedCartProducts.length; i++) {
-          let product = this.savedCartProducts[i].name.search('Bracelet');
-          if (product < 0) {
-            this.flag = true;
-            return false;
-          }
-        }
-        if (!this.flag) {
-          this.totalDiscount = (this.totalItemPrice * 25) / 100;
-          console.log(this.totalDiscount, "Brace00010");
-          this.discountApplied = this.totalDiscount;
-          //  this.totalItemPrice = this.totalItemPrice-this.discountApplied;
-          this.flag = false;
-          return true;
-        }
-        console.log(this.appliedCoupons, 'BRC00025');
-        break;
-      case 'BRCRIN20':
-        for (let i = 0; i < this.savedCartProducts.length; i++) {
-          let product = this.savedCartProducts[i].name.search('Bracelet');
-          let product2 = this.savedCartProducts[i].name.search('Ring');
-          if (product < 0 && product2 < 0) {
-            this.flag = true;
-            return false;
-          }
-        }
-        if (!this.flag) {
-          this.totalDiscount = (this.totalItemPrice * 20) / 100;
-          console.log(this.totalDiscount, "BRARIN00020");
-          this.discountApplied = this.totalDiscount;
-          // this.totalItemPrice = this.totalItemPrice-this.discountApplied;
-          this.flag = false;
-          return true;
-        }
-        console.log(this.appliedCoupons, 'BRCRIN20');
-        break;
-      case 'NECRIN25':
-        for (let i = 0; i < this.savedCartProducts.length; i++) {
-          let product = this.savedCartProducts[i].name.search('Necklace');
-          let product2 = this.savedCartProducts[i].name.search('Ring');
-          if (product < 0 || product2 < 0) {
-            this.flag = true;
-            return false;
-          }
-        }
-        if (!this.flag) {
-          this.totalDiscount = (this.totalItemPrice * 25) / 100;
-          console.log(this.totalDiscount, "NECRIN00020");
-          this.discountApplied = this.totalDiscount;
-          // this.totalItemPrice = this.totalItemPrice-this.discountApplied;
-          this.flag = false;
-          return true;
-        }
-        console.log(this.appliedCoupons, 'NECRIN25');
-        break;
-      case 'EARNEC20':
-        for (let i = 0; i < this.savedCartProducts.length; i++) {
-          let product = this.savedCartProducts[i].name.search('Necklace');
-          let product2 = this.savedCartProducts[i].name.search('Earrings');
-          if (product < 0 || product2 < 0) {
-            this.flag = true;
-            return false;
-          }
-        }
-        if (!this.flag) {
-          this.totalDiscount = (this.totalItemPrice * 20) / 100;
-          console.log(this.totalDiscount, "NECEAR00020");
-          this.discountApplied = this.totalDiscount;
-          // this.totalItemPrice = this.totalItemPrice-this.discountApplied;
-          this.flag = false;
-          return true;
-        }
-        console.log(this.appliedCoupons, 'EARNEC20');
-        break;
-      case '':
-        this.discountApplied=0;
-        break;
-      default:
-        this.discountApplied=0;
-        break;
     }
-    this.flag = false;
-    return;
+    if (typeof Worker !== 'undefined') {
+      // Create a new
+      const worker = new Worker(new URL('/src/app/service/app.worker', import.meta.url));
+      worker.onmessage = ({data}) => {
+        this.totalDiscount = data.totalDiscount;
+        this.discountApplied = data.discountApplied;
+      
+      };
+      worker.postMessage(data);
+    } else {
+      // Web Workers are not supported in this environment.
+      // You should add a fallback so that your program still executes correctly.
+    }
+
+   
   }
 
 
   manageQuantity(quantity: any, productName: any) {
-    // console.log(quantity);
-    // console.log(productName);
+
     for (let i = 0; i < this.savedCartProducts.length; i++) {
       if (this.savedCartProducts[i].name === productName) {
         if (this.savedCartProducts[i].quantity > quantity) {
-          const temp = this.savedCartProducts[i].quantity-quantity;
+          const temp = this.savedCartProducts[i].quantity - quantity;
           for (let j = 0; j < temp; j++) {
             this.cartService.removeProduct(this.savedCartProducts[i].name);
           }
@@ -254,3 +137,4 @@ export class CheckoutComponent implements OnInit {
     return this.cartService.getSavedProducts();
   }
 }
+

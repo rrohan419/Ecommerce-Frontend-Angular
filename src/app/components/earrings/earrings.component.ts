@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import * as Rx from 'rxjs';
 import { CartServiceService } from 'src/app/service/cart-service.service';
 import { ServiceService } from '../../service/service.service';
@@ -9,7 +9,7 @@ import { ServiceService } from '../../service/service.service';
   styleUrls: ['./earrings.component.scss']
 })
 export class EarringsComponent implements OnInit {
-  productEarings : any;
+  @Input()productEarings : any;
   
 
   constructor(private httpservice: ServiceService, private cartService: CartServiceService) { 
@@ -23,7 +23,7 @@ export class EarringsComponent implements OnInit {
   {
     this.httpservice.getEarings().subscribe((data) =>{
       this.productEarings = data;
-      console.warn(this.productEarings);
+      console.warn(this.productEarings,"gggg");
     });
   }
 

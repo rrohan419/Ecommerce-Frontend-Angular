@@ -18,35 +18,32 @@ export class AppComponent implements OnInit {
   total = this.cartService.cartQuantity.asObservable();
   myCartTotalPrice = this.cartService.totalPrice.asObservable();
 
-  productDiscountedPrice=0;
+  productDiscountedPrice = 0;
 
   constructor(private cartService: CartServiceService) {
     // cartService.getLocalStorageSavedProducts();
   }
-  
+
 
   ngOnInit(): void {
-    this.total.subscribe((data: number) => {
-      this.lastSavedQuantity = data;
-      console.log(this.lastSavedQuantity, "hamas");
-    });
-
     this.list.subscribe((data: any) => {
       this.cartData = data;
-      console.log(this.cartData);
+      console.log(this.cartData, "cart data app component");
+    });
+
+    this.total.subscribe((data: number) => {
+      this.lastSavedQuantity = data;
     });
 
     this.myCartTotalPrice.subscribe((data) => {
       this.cartTotal = data;
-      // this.productDiscountedPrice = data
-      console.log(this.cartTotal, "cart total");
     })
+
   }
   getAllCartProducts() {
     this.list.subscribe((data) => {
       this.cartData = data;
     });
-    
   }
 
   clearAllProducts() {
@@ -57,14 +54,28 @@ export class AppComponent implements OnInit {
     this.cartService.cartCount = 0;
     this.cartService.cartItem = [];
     localStorage.setItem('cartQuantity', JSON.stringify(0));
-    localStorage.setItem('savedItems', JSON.stringify([]));
-    localStorage.setItem('cartPrice', JSON.stringify(0));
-    this.lastSavedQuantity = localStorage.getItem('cartQuantity');
+    localStorage.setItem('cartProducts', JSON.stringify([]));
+    localStorage.setItem('subTotal', JSON.stringify(0));
+
+    // this.lastSavedQuantity = localStorage.getItem('cartQuantity');
   }
   deleteSingleProduct(itemName: any) {
 
     this.cartService.removeProduct(itemName);
+
     return this.getAllCartProducts();
   }
-  
+
 }
+
+// if (typeof Worker !== 'undefined') {
+//   // Create a new
+//   const worker = new Worker(new URL('./app.worker', import.meta.url));
+//   worker.onmessage = ({ data }) => {
+//     console.log(`page got message: ${data}`);
+//   };
+//   worker.postMessage('hello');
+// } else {
+//   // Web Workers are not supported in this environment.
+//   // You should add a fallback so that your program still executes correctly.
+// }

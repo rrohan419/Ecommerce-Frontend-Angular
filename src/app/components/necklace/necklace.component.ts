@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartServiceService } from 'src/app/service/cart-service.service';
 import { Product } from 'src/app/service/product';
@@ -10,7 +10,7 @@ import { ServiceService } from '../../service/service.service';
   styleUrls: ['./necklace.component.scss']
 })
 export class NecklaceComponent implements OnInit {
-  productNecklace: any;
+  @Input()productNecklace: any;
   lastSavedCartProducts: any = localStorage.getItem('savedItems');
 
   productId!: number;
@@ -23,7 +23,7 @@ export class NecklaceComponent implements OnInit {
   getAllNecklace() {
     this.httpservice.getNecklaces().subscribe((data) => {
       this.productNecklace = data;
-      this.productNecklace.quantity = 0;
+      // this.productNecklace.quantity = 0;
       console.log(this.productNecklace);
     })
   }

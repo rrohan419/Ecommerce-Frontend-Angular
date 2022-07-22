@@ -11,15 +11,15 @@
                             <img src="{{product.image}}" class="product-image">
                         </div>
                         <div class="product-text-details">
-                            <h3>{{product.name}}</h3>
-                            <h3>{{product.price}}</h3>
-                            <h3>{{product.quantity}}</h3>
+                            <h3>Name: {{product.name}}</h3>
+                            <h3> price : {{product.price}}</h3>
+                            <h3>Quantity : {{product.quantity}}</h3>
                         </div>
                         <div class=" mb-3 my-cart-utility">
                             <button class="btn btn-danger  btn-remove "
                                 (click)="removeProduct(product.name)">remove</button>
 
-                            <label>quantity : </label>
+                            <label class="ml-3"><b>quantity : </b></label>
                             <input type="number" class="quantity-manager" value="{{product.quantity}}" #productQuantity>
                             <button class="btn btn-success btn-sm ml-3" (click)="  manageQuantity(productQuantity.value, product.name)
                             ">confirm</button>

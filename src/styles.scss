@@ -10,12 +10,6 @@
     box-shadow: 0 0 20px #ccc;
 }
 
-
-.display-product-image {
-    width: 7 rem;
-    margin-left: 27px;
-}
-
 .display-product-price {
     padding-top: 30px;
 }
@@ -42,4 +36,8 @@
     font-weight: 600;
     font-size: x-large;
     color: black;
+}
+
+img {
+    width: 100%;
 }

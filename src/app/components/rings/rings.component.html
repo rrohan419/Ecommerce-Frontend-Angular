@@ -1,5 +1,5 @@
 <div class="container-fluid main-div">
-    <div class="col-md-3 card display-product-rings" *ngFor="let product of productRings">
+    <div class="card display-product col-md-3" *ngFor="let product of productRings">
         <!-- <p class="display-product-id">{{product.id}}</p> -->
         <a [routerLink]="['/productdetailring/'+product.id]">
             <img class="card-title display-product-image" [src]="product.image">

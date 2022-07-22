@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CartServiceService } from 'src/app/service/cart-service.service';
 import { ServiceService } from '../../service/service.service';
 
@@ -8,7 +8,7 @@ import { ServiceService } from '../../service/service.service';
   styleUrls: ['./rings.component.scss']
 })
 export class RingsComponent implements OnInit {
-  productRings:any;
+  @Input()productRings:any;
   constructor(private httpservice:ServiceService, private cartService :CartServiceService) { }
 
   ngOnInit(): void {
@@ -24,4 +24,5 @@ export class RingsComponent implements OnInit {
   {
     this.cartService.addProduct(product);
   }
+  
 }
